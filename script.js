@@ -134,13 +134,30 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     });
 
-    // Mobile menu toggle (basic implementation)
+    // Mobile menu toggle functionality
     const mobileToggle = document.querySelector('.mobile-menu-toggle');
-    const navMenu = document.querySelector('.nav-menu');
+    const navMenu = document.querySelector('.mobile-nav');
+    const closeMenu = document.querySelector('.close-menu');
+    const overlay = document.getElementById('overlay');
 
     if (mobileToggle && navMenu) {
         mobileToggle.addEventListener('click', function () {
-            navMenu.classList.toggle('active');
+            navMenu.classList.add('active');
+            overlay.classList.add('active');
+        });
+    }
+
+    if (closeMenu) {
+        closeMenu.addEventListener('click', function () {
+            navMenu.classList.remove('active');
+            overlay.classList.remove('active');
+        });
+    }
+
+    if (overlay) {
+        overlay.addEventListener('click', function () {
+            navMenu.classList.remove('active');
+            overlay.classList.remove('active');
         });
     }
 });
